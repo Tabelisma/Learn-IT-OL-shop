@@ -60,17 +60,22 @@
 
     ];
 
+    if(isset( $_SESSION['cartCount'])){
+        $CarCount = $_SESSION['cartCount'];
+    } 
     if(isset($_POST['btnConfirm'])){
         $CarCount++;        
         $_SESSION['cartItems'][$CarCount]['id'] = $_GET['pid'];
         $_SESSION['cartItems'][$CarCount]['size'] = $_POST['radSize'];
-        $_SESSION['cartItems'][$CarCount]['qty'] = $_POST['inputQTY'];
-        $_SESSION['cartCount'] = $CarCount;        
+        $_SESSION['cartItems'][$CarCount]['qty'] = $_POST['inputQT'];
+        $_SESSION['cartCount'] = $CarCount;
+  
         header("Location: confirm.php");
     }
     else if(isset($_POST['btnCancel'])){
         header("Location: index.php");
     }
+    
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +92,7 @@
 <body>
     <div class="container">
         <div class="mt-5">
-            <h3 class="h3 d-inline mt-5">Learn IT Easy Online Shop</h3>
+        <h3 class="h3 d-inline mt-5"> <i class="fa-solid fa-store"></i> Learn IT Easy Online Shop</h3>
             <div class="d-inline float-right ">
                 <a href="cart.php" name="btnCart" class="btn btn-primary btn-sm mt-1">
                     <i class="fa-solid fa-cart-shopping"></i>
@@ -116,21 +121,21 @@
                 <form action="" method="post" class="form-group">
                     <h5>Select Size</h5>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="radSize" id="radXS" value="XS" checked><label class="form-check-label pr-4" for="radXS">40</label>
-                        <input class="form-check-input" type="radio" name="radSize" id="radSM" value="SM"><label class="form-check-label pr-4" for="radSM">41</label>
-                        <input class="form-check-input" type="radio" name="radSize" id="radMD" value="MD"><label class="form-check-label pr-4" for="radMD">42</label>
-                        <input class="form-check-input" type="radio" name="radSize" id="radLG" value="LG"><label class="form-check-label pr-4" for="radLG">43</label>
-                        <input class="form-check-input" type="radio" name="radSize" id="radXL" value="XL"><label class="form-check-label pr-4" for="radXL">44</label>
+                        <input class="form-check-input" type="radio" name="radSize" id="radXS" value="XS" checked><label class="form-check-label pr-4" for="radXS">XS</label>
+                        <input class="form-check-input" type="radio" name="radSize" id="radSM" value="SM"><label class="form-check-label pr-4" for="radSM">SM</label>
+                        <input class="form-check-input" type="radio" name="radSize" id="radMD" value="MD"><label class="form-check-label pr-4" for="radMD">MD</label>
+                        <input class="form-check-input" type="radio" name="radSize" id="radLG" value="LG"><label class="form-check-label pr-4" for="radLG">LG</label>
+                        <input class="form-check-input" type="radio" name="radSize" id="radXL" value="XL"><label class="form-check-label pr-4" for="radXL">XL</label>
                     </div>
                     <hr>
                     <h5>Enter Quantity:</h5>
-                    <input class="form-control" name="inputQTY" type="number" placeholder="" min="1" max="100" value="1">
+                    <input class="form-control" name="inputQT" type="number" placeholder="" min="1" max="100" value="1">
                     <div class="my-3">
                         <button name="btnConfirm"class="btn btn-dark">
                             <i class="fa-solid fa-circle-check"></i>
                             Confirm Product Purchase
                         </button>
-                        <button name="btnCancel" class="btn btn-danger">Cancel / Go Back</button>
+                        <a href="index.php"name="btnCancel" class="btn btn-danger">Cancel/Go Back</button>
                     </div>
                 </form>
 

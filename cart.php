@@ -59,12 +59,17 @@
         ],
 
     ];
-    $amount = 0;
+    $sub_total = 0;
     $itemQTYCount = 0;
-    $itemID = 0;
-    $itemSize = "";
-    $itemQty = 0;
+    $product_id = 0;
+    $product_qty = 0;
     $itemTotal = 0;
+    if(isset($_POST['btnUpdate'])){
+        foreach($_POST['inputQTY'] as $key => $value){
+            $cartQTYCount = $key + 1;
+            $_SESSION['cartItems'][$cartQTYCount]['qty'] = $value;
+        }
+    }
 
 ?>
 
@@ -74,7 +79,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/ITshop.css">
 
@@ -83,17 +88,19 @@
 <body>
     <div class="container">
         <div class="mt-5 ">
-            <h3 class="h3 d-inline mt-5">Learn IT Easy Online Shop</h3>
+        <h3 class="h3 d-inline mt-5"> <i class="fa-solid fa-store"></i> Learn IT Easy Online Shop</h3>
             <div class="d-inline float-right ">
             <a href="cart.php" name="btnCart" class="btn btn-primary btn-sm mt-1">
                 <i class="fa-solid fa-cart-shopping"></i>
                 Cart <span class="badge badge-light"><?php echo isset($_SESSION['cartItems'])? count($_SESSION['cartItems']): '0' ?></span>
-                <span class="sr-only">Unread messages</span>
+                <span class="sr-only">unread messages</span>
             </a>
             </div>
         </div>
         <div class="row mt-3">
             <div class="col-12">
+            <form action="" method="post">
+
                 <div class="table-responsive">
                     <?php if (count($_SESSION['cartItems']) > 0): ?>
 
@@ -110,26 +117,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($_SESSION['cartItems'] as $key => $value){
-                                        $itemID = $_SESSION['cartItems'][$key]['id'];
-                                        $itemSize =  $_SESSION['cartItems'][$key]['size'];
-                                        $itemQty = $_SESSION['cartItems'][$key]['qty'];
-                                        $itemTotal = $arrProducts[$itemID]['price'] * $itemQty;
-                                        $itemQTYCount += $itemQty;
+                                <?php foreach($_SESSION['cartItems'] as $key => $value){    
+                                        $product_id = $_SESSION['cartItems'][$key]['id'];
+                                        $product_qty =  $_SESSION['cartItems'][$key]['qty'];
+                                        $product_total = $arrProducts[$product_id]['price'] * $product_qty;
+                                        $itemQTYCount = $itemQTYCount + $product_qty;
+                                        $sub_total = $sub_total + $product_total;
 
                                         echo '
                                         <tr>
-                                            <td><img style="width: 2em" src="./img/' . $arrProducts[$itemID]['photo1'] . '"/></td>
-                                            <td>' . $arrProducts[$itemID]['name'] . '</td>
-                                            <td class="text-center">' . $itemSize . '</td>
-                                            <td class="text-center"><input class="text-center" name="numQTY' . $key . '" class="form-control text-center" type="number" min="1" max="100" value="'.  $itemQty . ' "></td>
-                                            <td class="text-center">₱ ' . $arrProducts[$itemID]['price'] . ' </td>
-                                            <td class="text-center">₱ ' . $itemTotal .'</td>
-                                            <td class="text-center"><a class="btn btn-sm btn-danger" href="remove-confirm.php?cartID=' . $key . '&qty=' . $itemQty .'"><i class="fa fa-trash"></i> </a> </td>
+                                            <td><img style="width: 2em" src="./img/' . $arrProducts[$product_id]['photo1'] . '"/></td>
+                                            <td>' . $arrProducts[$product_id]['name'] . '</td>
+                                            <td class="text-center">' . $_SESSION['cartItems'][$key]['size'] . '</td>
+                                            <td class="text-center"><input class="text-center" name="inputQTY[]" type="number" min="1" max="100" value="'.  $product_qty . '"></td>
+                                            <td class="text-center" >₱ ' . $arrProducts[$product_id]['price'] . ' </td>
+                                            <td class="text-center">₱ ' . $product_total .'</td>
+                                            <td class="text-center"><a class="btn btn-sm btn-danger" href="remove-confirm.php?cartID=' . $key . '&qty=' . $product_qty .'"><i class="fa fa-trash"></i> </a> </td>
                                         </tr>
                                         ';
-                                        $amount += $itemTotal;
                                     }
+                                    
                                 ?>
                         
                                 <tr>
@@ -138,7 +145,7 @@
                                     <td class="text-center"><strong>Total</strong></td>
                                     <td class="text-center"><?php echo $itemQTYCount;?></td>
                                     <td class="text-center">----</td>
-                                    <td class="text-center"><strong>₱ <?php echo $amount;?></strong></td>
+                                    <td class="text-center"><strong>₱ <?php echo  $sub_total?></strong></td>
                                     <td class="text-center">----</td>
 
                                 </tr>
@@ -146,7 +153,6 @@
                         </table>
                     </div>
                 </div>
-                <!-- Footer button -->
                 <div class="col mb-2">
                     <div class="row">
                         <form class="form-inline w-100" method="post">
@@ -171,6 +177,7 @@
                         </form>
                     </div>
                 </div>
+            </form>
             <?php else: ?> 
                 <table class="table table-striped">
                     <thead>

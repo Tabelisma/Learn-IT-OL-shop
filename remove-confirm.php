@@ -88,7 +88,7 @@
 <body>
     <div class="container">
         <div class="mt-5">
-            <h3 class="h3 d-inline mt-5">Learn IT Easy Online Shop</h3>
+        <h3 class="h3 d-inline mt-5"> <i class="fa-solid fa-store"></i> Learn IT Easy Online Shop</h3>
             <div class="d-inline float-right ">
             <a href="cart.php" name="btnCart" class="btn btn-primary btn-sm mt-1">
                 <i class="fa-solid fa-cart-shopping"></i>
