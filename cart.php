@@ -86,7 +86,7 @@
     <title>Cart</title>
 </head>
 <body>
-    <div class="container">     //Container para sa taas or design
+    <div class="container">     <!-- Container para sa taas or design -->
         <div class="mt-5 ">
         <h3 class="h3 d-inline mt-5"> <i class="fa-solid fa-store"></i> Learn IT Easy Online Shop</h3>
             <div class="d-inline float-right ">

@@ -135,7 +135,7 @@
                             <i class="fa-solid fa-circle-check"></i>
                             Confirm Product Purchase
                         </button>
-                        <a href="index.php"name="btnCancel" class="btn btn-danger">Cancel/Go Back</button>
+                        <a href="index.php"name="btnCancel" class="btn btn-danger">Cancel/Go Back</a>
                     </div>
                 </form>
 
