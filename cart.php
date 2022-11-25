@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    $arrProducts = [
+    session_start();        //seasion start ito yung mga ibang pages or nag lilipat like katulad ng link
+    $arrProducts = [        //Array product ito
         [
             'name' => "Adidas Super Star",
             'description' => "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore voluptate ea consequatur! Doloribus maiores, fugit, laborum unde magnam necessitatibus a minima animi",
@@ -59,11 +59,11 @@
         ],
 
     ];
-    $sub_total = 0;
-    $itemQTYCount = 0;
-    $product_id = 0;
-    $product_qty = 0;
-    $itemTotal = 0;
+    $sub_total = 0;     //variable 
+    $itmQtyCnt = 0;      
+    $prdctId = 0;
+    $prdCtQty = 0;
+    $itmTtl = 0;
     if(isset($_POST['btnUpdate'])){
         foreach($_POST['inputQTY'] as $key => $value){
             $cartQTYCount = $key + 1;
@@ -86,7 +86,7 @@
     <title>Cart</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container">     //Container para sa taas or design
         <div class="mt-5 ">
         <h3 class="h3 d-inline mt-5"> <i class="fa-solid fa-store"></i> Learn IT Easy Online Shop</h3>
             <div class="d-inline float-right ">
@@ -118,21 +118,21 @@
                             </thead>
                             <tbody>
                                 <?php foreach($_SESSION['cartItems'] as $key => $value){    
-                                        $product_id = $_SESSION['cartItems'][$key]['id'];
-                                        $product_qty =  $_SESSION['cartItems'][$key]['qty'];
-                                        $product_total = $arrProducts[$product_id]['price'] * $product_qty;
-                                        $itemQTYCount = $itemQTYCount + $product_qty;
+                                        $prdctId = $_SESSION['cartItems'][$key]['id'];
+                                        $prdCtQty =  $_SESSION['cartItems'][$key]['qty'];
+                                        $product_total = $arrProducts[$prdctId]['price'] * $prdCtQty;
+                                        $itmQtyCnt = $itmQtyCnt + $prdCtQty;
                                         $sub_total = $sub_total + $product_total;
 
                                         echo '
                                         <tr>
-                                            <td><img style="width: 2em" src="./img/' . $arrProducts[$product_id]['photo1'] . '"/></td>
-                                            <td>' . $arrProducts[$product_id]['name'] . '</td>
+                                            <td><img style="width: 2em" src="./img/' . $arrProducts[$prdctId]['photo1'] . '"/></td>
+                                            <td>' . $arrProducts[$prdctId]['name'] . '</td>
                                             <td class="text-center">' . $_SESSION['cartItems'][$key]['size'] . '</td>
-                                            <td class="text-center"><input class="text-center" name="inputQTY[]" type="number" min="1" max="100" value="'.  $product_qty . '"></td>
-                                            <td class="text-center" >₱ ' . $arrProducts[$product_id]['price'] . ' </td>
+                                            <td class="text-center"><input class="text-center" name="inputQTY[]" type="number" min="1" max="100" value="'.  $prdCtQty . '"></td>
+                                            <td class="text-center" >₱ ' . $arrProducts[$prdctId]['price'] . ' </td>
                                             <td class="text-center">₱ ' . $product_total .'</td>
-                                            <td class="text-center"><a class="btn btn-sm btn-danger" href="remove-confirm.php?cartID=' . $key . '&qty=' . $product_qty .'"><i class="fa fa-trash"></i> </a> </td>
+                                            <td class="text-center"><a class="btn btn-sm btn-danger" href="remove-confirm.php?cartID=' . $key . '&qty=' . $prdCtQty .'"><i class="fa fa-trash"></i> </a> </td>
                                         </tr>
                                         ';
                                     }
@@ -143,7 +143,7 @@
                                     <td></td>
                                     <td></td>
                                     <td class="text-center"><strong>Total</strong></td>
-                                    <td class="text-center"><?php echo $itemQTYCount;?></td>
+                                    <td class="text-center"><?php echo $itmQtyCnt;?></td>
                                     <td class="text-center">----</td>
                                     <td class="text-center"><strong>₱ <?php echo  $sub_total?></strong></td>
                                     <td class="text-center">----</td>
