@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    session_start();     //seasion start ito yung mga ibang pages or nag lilipat like katulad ng link
 ?>
 
 <!DOCTYPE html>

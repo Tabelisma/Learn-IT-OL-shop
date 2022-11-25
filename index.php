@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    $arrProducts = [
+    session_start();        //seasion start ito yung mga ibang pages or nag lilipat like katulad ng link
+    $arrProducts = [         //Array product ito
         [
             'name' => "Adidas Super Star",
             'description' => "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore voluptate ea consequatur! Doloribus maiores, fugit, laborum unde magnam necessitatibus a minima animi",

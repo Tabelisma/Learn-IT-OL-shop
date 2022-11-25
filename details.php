@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    $arrProducts = [
+    session_start();     //seasion start ito yung mga ibang pages or nag lilipat like katulad ng link
+    $arrProducts = [         //Array product ito
         [
             'name' => "Adidas Super Star",
             'description' => "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore voluptate ea consequatur! Doloribus maiores, fugit, laborum unde magnam necessitatibus a minima animi",
@@ -60,7 +60,7 @@
 
     ];
 
-    if(isset( $_SESSION['cartCount'])){
+    if(isset( $_SESSION['cartCount'])){         //if statements
         $CarCount = $_SESSION['cartCount'];
     } 
     if(isset($_POST['btnConfirm'])){
@@ -121,11 +121,11 @@
                 <form action="" method="post" class="form-group">
                     <h5>Select Size</h5>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="radSize" id="radXS" value="XS" checked><label class="form-check-label pr-4" for="radXS">XS</label>
-                        <input class="form-check-input" type="radio" name="radSize" id="radSM" value="SM"><label class="form-check-label pr-4" for="radSM">SM</label>
-                        <input class="form-check-input" type="radio" name="radSize" id="radMD" value="MD"><label class="form-check-label pr-4" for="radMD">MD</label>
-                        <input class="form-check-input" type="radio" name="radSize" id="radLG" value="LG"><label class="form-check-label pr-4" for="radLG">LG</label>
-                        <input class="form-check-input" type="radio" name="radSize" id="radXL" value="XL"><label class="form-check-label pr-4" for="radXL">XL</label>
+                        <input class="form-check-input" type="radio" name="radSize" id="rad40" value="40" checked><label class="form-check-label pr-4" for="rad40">40</label>
+                        <input class="form-check-input" type="radio" name="radSize" id="rad41" value="41"><label class="form-check-label pr-4" for="rad41">41</label>
+                        <input class="form-check-input" type="radio" name="radSize" id="rad42" value="42"><label class="form-check-label pr-4" for="rad42">42</label>
+                        <input class="form-check-input" type="radio" name="radSize" id="rad43" value="43"><label class="form-check-label pr-4" for="rad43">43</label>
+                        <input class="form-check-input" type="radio" name="radSize" id="rad44" value="44"><label class="form-check-label pr-4" for="rad44">44</label>
                     </div>
                     <hr>
                     <h5>Enter Quantity:</h5>
