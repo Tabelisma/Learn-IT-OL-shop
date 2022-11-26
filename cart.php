@@ -130,8 +130,8 @@
                                             <td>' . $arrProducts[$prdctId]['name'] . '</td>
                                             <td class="text-center">' . $_SESSION['cartItems'][$key]['size'] . '</td>
                                             <td class="text-center"><input class="text-center" name="inputQTY[]" type="number" min="1" max="100" value="'.  $prdCtQty . '"></td>
-                                            <td class="text-center" >₱ ' . $arrProducts[$prdctId]['price'] . ' </td>
-                                            <td class="text-center">₱ ' . $product_total .'</td>
+                                            <td class="text-center" >₱ ' . number_format( $arrProducts[$prdctId]['price']) . ' </td>
+                                            <td class="text-center">₱ ' . number_format( $product_total) .'</td>
                                             <td class="text-center"><a class="btn btn-sm btn-danger" href="remove-confirm.php?cartID=' . $key . '&qty=' . $prdCtQty .'"><i class="fa fa-trash"></i> </a> </td>
                                         </tr>
                                         ';
