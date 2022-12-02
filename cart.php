@@ -59,7 +59,7 @@
         ],
 
     ];
-    $sub_total = 0;     //variable 
+    $sub_total = 0;     //varriable mga ito
     $itmQtyCnt = 0;      
     $prdctId = 0;
     $prdCtQty = 0;
