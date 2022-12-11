@@ -1,6 +1,6 @@
 <?php
-    session_start();    //seasion start ito yung mga ibang pages or nag lilipat like katulad ng link
-    session_destroy();      //destroy is tapos na yung link na ito or back to the start 
+    session_start();    //seasion start ito yung mga ibang pages or nag lilipat like katulad ng link!
+    session_destroy();      //destroy is tapos na yung link na ito or back to the start!
 ?>
 <!DOCTYPE html>
 <html lang="en">
